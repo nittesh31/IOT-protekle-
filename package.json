@@ -1,0 +1,25 @@
+{
+  "name": "iot-protekle-",
+  "version": "1.0.0",
+  "description": "IoT-ICPE41_MiniProject",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nittesh31/IOT-protekle-.git"
+  },
+  "keywords": [
+    "'Toilet-Management'"
+  ],
+  "author": "Protekle",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nittesh31/IOT-protekle-/issues"
+  },
+  "homepage": "https://github.com/nittesh31/IOT-protekle-#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
