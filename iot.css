@@ -1,0 +1,23 @@
+.heade{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgba(42, 25, 25, 0.692);
+}
+
+.cardi{
+    padding-top: 13%;
+    height:76%
+}
+.tit{
+    padding-top: 8%;
+    text-align: center;
+    color: white;
+}
+.card{
+    height: 140%;
+    
+}
+.fot{
+    padding-top: 2%;
+    text-align: center;
+}
+  
