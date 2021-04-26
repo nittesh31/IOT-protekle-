@@ -54,8 +54,8 @@ const sensorData = [
 
 server.use(express.static('public'));
 
-server.get('/index.htm', function (req, res) {
-   res.sendFile( __dirname + "/" + "iot.html" );
+server.get('/index.html', function (req, res) {
+   res.sendFile( __dirname + "/" + "iot.html" )
 })
 
 server.use(express.json());
