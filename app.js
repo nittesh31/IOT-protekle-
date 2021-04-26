@@ -52,6 +52,12 @@ const sensorData = [
     {gas: 15, smell: 5, RGB: 5, IR: 1},
 ];
 
+server.use(express.static('public'));
+
+server.get('/index.htm', function (req, res) {
+   res.sendFile( __dirname + "/" + "iot.html" );
+})
+
 server.use(express.json());
 
 server.get('/' , (req, res) => {
