@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/nittesh31/IOT-protekle-#readme",
   "dependencies": {
+    "ejs": "^3.1.6",
     "express": "^4.17.1",
     "joi": "^17.4.0",
     "postman": "^0.2.0"

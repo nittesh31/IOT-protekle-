@@ -46,17 +46,21 @@
 
 const express = require('express');
 const server = express();
+const ejs = require('ejs')
 
-const sensorData = [
+
+var sensorData = [
     {gas: 10, smell: 2, RGB: 15, IR: 10},
     {gas: 15, smell: 5, RGB: 5, IR: 1},
 ];
 
 server.use(express.static('public'));
+server.set('view engine', 'ejs');
 
-server.get('/index.html', function (req, res) {
-   res.sendFile( __dirname + "/" + "iot.html" )
-})
+
+// server.get('/index.html', function (req, res) {
+//    res.sendFile( __dirname + "/" + "iot.html" )
+// })
 
 server.use(express.json());
 
@@ -71,12 +75,31 @@ server.post('/dataViewer', (req, res) => {
         RGB: req.body.RGB, 
         IR: req.body.IR
     }   
-
+    
     sensorData.push(sensorData1);
     res.send(sensorData1);
+    var count = sensorData.length;
+    console.log(count)
 })
+server.get('/dataReceiver', (req, res) => {
+    
+    var count = sensorData.length -1;
+    console.log(count);
+    res.render('iot', {
+        
+        gas: sensorData[count].gas,
+        smell: sensorData[count].smell, 
+        RGB: sensorData[count].RGB, 
+        IR: sensorData[count].IR
+    });
+
+})
+
 
 server.get('/dataViewer', (req, res) => {
     res.send(sensorData)
 })
 server.listen(3000, () => console.log('Listening on port 3000....'))
+
+
+// module.exports.arr = sensorData;

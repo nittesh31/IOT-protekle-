@@ -8,6 +8,8 @@
         integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+    
+    
     <style>
     .heade{
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -33,32 +35,13 @@
     }
   
     </style>
+    
     <script src = "https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     
 </head>
 
 
 
-
-
-    <!--<header>
-        IOT Dashboard-Protekle 
-    </header>
-    <footer>
-        <h1>
-            group members 
-        </h1>
-        <h6>
-            Sabari raahul lachu nitee
-        </h6>
-        <div class="sensorData">
-            <div class="gas"> The reading from gas sensor is</div>
-            <div class="smell">The reading from smell sensor is</div>
-            <div class="RGB">The reading from RGB sensor is</div>
-            <div class="IR">The reading from IR sensor is</div>
-        </div>
-    </footer>
--->
 <nav class="navbar  navbar-light  py-4 shadow-sm">
     <h1 class="heade">TOILET MANAGEMENT SYSTEM</h1>
     
@@ -73,7 +56,7 @@
                         <p class="tit">
                             to check so and so
                         </p>
-                        <div id="a">0</div>
+                        <div class = "tit" id="a"> <%= IR %> </div>
 
                     </div>
                 </div>
@@ -85,7 +68,7 @@
                         <p class="tit">
                             to check so and so
                         </p>
-                        <div id="b"></div>
+                        <div class = "tit" id="b"> <%= smell %> </div>
                     </div>
                 </div>
             </div>
@@ -96,7 +79,7 @@
                         <p class="tit">
                             to check so and so
                         </p>
-                        <div id="c"></div>
+                        <div class = "tit" id="c"> <%= gas %> </div>
                     </div>
                 </div>
             </div>
@@ -107,7 +90,7 @@
                         <p class="tit">
                             to check so and so
                         </p>
-                        <div id="d"></div>
+                        <div class = "tit" id="d"> <%= RGB %> </div>
                     </div>
                 </div>
             </div>
@@ -121,13 +104,6 @@
     <p>Protekle</p>
 
 </footer>
-
-<script src = "./iot.js">
-    // var sensorData = require('./app.js')
-
-    // document.getElementById("a").innerHTML = sensorData[0].gas
-    // console.log("hello world")
-</script>
 
 </body>
 
