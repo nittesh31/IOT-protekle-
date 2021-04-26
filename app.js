@@ -54,6 +54,9 @@ var sensorData = [
     {gas: 15, smell: 5, RGB: 5, IR: 1},
 ];
 
+var lachu=[
+    {"sab"}
+]
 server.use(express.static('public'));
 server.set('view engine', 'ejs');
 
@@ -80,6 +83,14 @@ server.post('/dataViewer', (req, res) => {
     res.send(sensorData1);
     var count = sensorData.length;
     console.log(count)
+})
+server.post('/testdata', (req, res) => {
+    const sensorData2 = {
+        name:req.body.name
+    }   
+    lachu.push(sensorData2);
+    res.send(sensorData2);
+    
 })
 server.get('/dataReceiver', (req, res) => {
     
