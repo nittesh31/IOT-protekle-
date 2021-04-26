@@ -99,7 +99,7 @@ server.get('/dataReceiver', (req, res) => {
 server.get('/dataViewer', (req, res) => {
     res.send(sensorData)
 })
-server.listen(3000, () => console.log('Listening on port 3000....'))
+server.listen(process.env.PORT||3000, () => console.log('Listening on port 3000....'))
 
 
 // module.exports.arr = sensorData;
