@@ -4,6 +4,7 @@
   "description": "IoT-ICPE41_MiniProject",
   "main": "app.js",
   "scripts": {
+    "start": "node app.js",
     "test": "test"
   },
   "repository": {
