@@ -55,7 +55,7 @@ var sensorData = [
 ];
 
 var lachu=[
-    {"sab"}
+    {name:"sab"}
 ]
 server.use(express.static('public'));
 server.set('view engine', 'ejs');
@@ -91,6 +91,9 @@ server.post('/testdata', (req, res) => {
     lachu.push(sensorData2);
     res.send(sensorData2);
     
+})
+server.get('/testdata', (req, res) => {
+    res.send(lachu)
 })
 server.get('/dataReceiver', (req, res) => {
     
