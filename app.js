@@ -112,6 +112,17 @@ server.get('/dataReceiver', (req, res) => {
 
 })
 
+server.post('/sample', function (req, res) {
+    const body = req.body.Body
+    res.set('Content-Type', 'text/plain')
+    res.send(`You sent: ${body} to Express`)
+  })
+server.get('/sample', function (req, res) {
+const body = req.body.Body
+res.set('Content-Type', 'text/plain')
+res.send(`You sent: ${body} to Express`)
+})
+
 
 server.get('/dataViewer', (req, res) => {
     res.send(sensorData)
