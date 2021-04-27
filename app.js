@@ -55,7 +55,7 @@ var sensorData = [
 ];
 
 
-sever.use(bodyParser.json());
+server.use(bodyParser.json());
 
 var lachu=[
     {name:"sab"}
