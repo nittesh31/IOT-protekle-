@@ -47,7 +47,7 @@
 const express = require('express');
 const server = express();
 const ejs = require('ejs');
-var bodyParser = require('body-parser');
+const bodyParser = require('body-parser');
 
 var sensorData = [
     {gas: 10, smell: 2, RGB: 15, IR: 10},
