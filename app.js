@@ -54,7 +54,7 @@ var sensorData = [
     {gas: 15, smell: 5, RGB: 5, IR: 1},
 ];
 
-sever.use(bodyParser.json());
+server.use(bodyParser.json());
 
 var lachu=[
     {name:"sab"}
