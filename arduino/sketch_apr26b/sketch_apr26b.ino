@@ -1,6 +1,10 @@
+
+
 #define trigPin 16
 #define echoPin 5
-#include<Arduino_JSON.h>
+long duration; // variable for the duration of sound wave travel
+long distance; // variable for the distance measurement
+#include <Arduino_JSON.h>
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h> 
 #include <ESP8266WebServer.h>
@@ -11,12 +15,14 @@ String postData;
 String postVariable = "Level of tank=";
 
 WiFiClient client;
-char server[] = "https://protekle-toiletsystem.herokuapp.com/dataViewer";
+char server[] = "https://protekle-toiletsystem.herokuapp.com/testdata";
 void setup() {
   // put your setup code here, to run once:
   Serial.begin (9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
+   Serial.println("Ultrasonic Sensor HC-SR04 Test"); // print some text in Serial Monitor
+  Serial.println("with Arduino UNO R3");
   WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
   delay(1000);
   WiFi.mode(WIFI_STA);        //This line hides the viewing of ESP as wifi hotspot
@@ -40,57 +46,57 @@ void setup() {
 }
 
 void loop() {
-    long duration, distance;
-  digitalWrite(trigPin, LOW);  // Added this line
-  delayMicroseconds(2); // Added this line
-  digitalWrite(trigPin, HIGH);
-//  delayMicroseconds(1000); - Removed this line
-  delayMicroseconds(10); // Added this line
+  // Clears the trigPin condition
   digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  // Sets the trigPin HIGH (ACTIVE) for 10 microseconds
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  // Reads the echoPin, returns the sound wave travel time in microseconds
   duration = pulseIn(echoPin, HIGH);
-  distance = (duration/2) / 29.1;
-  Serial.println(distance);
-   String data=String(distance);
-    postData = postVariable + data;
-  // put your main code here, to run repeatedly:
+  // Calculating the distance
+  distance = duration * 0.034 / 2; // Speed of sound wave divided by 2 (go and back)
+  // Displays the distance on the Serial Monitor
+  Serial.print("Distance: ");
+  Serial.print(distance);
+  Serial.println(" cm");
+  delay(1000);
+   String data1=String(distance);
+    postData = postVariable + data1;
+
+    JSONVar myObject = JSON.parse("{\"api_key\":\"9bad6dff-ad74-4c51-ab4c-67a5997b976c\",\"name\":\"lacu\"}");
+      if (JSON.typeof(myObject) == "undefined") {
+          Serial.println("Parsing input failed!");
+          return;
+}
+
+Serial.print("JSON object = ");
+Serial.println(myObject);
   HTTPClient http;
-//  JSONVar myObject = JSON.parse(sensorReadings);
-//
-//// JSON.typeof(jsonVar) can be used to get the type of the var
-//if (JSON.typeof(myObject) == "undefined") {
-//  Serial.println("Parsing input failed!");
-//  return;
-//}
-//
-//Serial.print("JSON object = ");
-//Serial.println(myObject);
-      
-      // Your Domain name with URL path or IP address with path
-      http.begin(server);
+      http.begin(client,server);
+      http.addHeader("Content-Type", "application/json");
+      http.addHeader("Content-Length","10");
+//      http.addHeader("auth-key","9bad6dff-ad74-4c51-ab4c-67a5997b976c");
 
-      // Specify content-type header
-      http.addHeader("Content-Type", "application/x-www-form-urlencoded");
-      // Data to send with HTTP POST
-      String httpRequestData = "gas=1&smell=2&RGB=6&IR=4";           
-      // Send HTTP POST request
-      int httpResponseCode = http.POST(httpRequestData);
-      
-      // If you need an HTTP request with a content type: application/json, use the following:
-//      http.addHeader("Content-Type", "application/json");
-//      int httpResponseCode = http.POST("{\"name\":\"tPmAT5Ab3j7F9\"}");
+      int httpCode = http.POST("{\"name\": \"lachsc\"}"); 
+    if (httpCode > 0) {
+      // HTTP header has been send and Server response header has been handled
+      Serial.printf("[HTTP] POST... code: %d\n", httpCode);
 
-      // If you need an HTTP request with a content type: text/plain
-//      http.addHeader("Content-Type", "text/plain");
-//      int httpResponseCode = http.POST("name:'Hello, World!'");
-//     
-      Serial.print("HTTP Response code: ");
-      Serial.println(httpResponseCode);
-        
-      // Free resources
+      // file found at server
+      if (httpCode == HTTP_CODE_OK) {
+        const String& payload = http.getString();
+        Serial.println("received payload:\n<<");
+        Serial.println(payload);
+        Serial.println(">>");
+      }
+    } else {
+      Serial.println(httpCode);
+      Serial.printf("[HTTP] POST... failed, error: %s\n", http.errorToString(httpCode).c_str());
+    }
       http.end();
- 
 
   Serial.println(postData);
-
-  delay(3000);
+  delay(2000);
 }
