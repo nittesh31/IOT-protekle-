@@ -4,8 +4,11 @@
 }
 
 .cardi{
-    padding-top: 13%;
-    height:17%
+    padding-top: 7%;
+    
+}
+.container{
+    width:1300px;
 }
 .tit{
     padding-top: 8%;
@@ -13,11 +16,15 @@
     color: white;
 }
 .card{
-    height: 140%;
+    height: 160%;
     
 }
 .fot{
-    padding-top: 2%;
+    padding-top: 12%;
     text-align: center;
+}
+.ba{
+    align-items: right;
+    
 }
   

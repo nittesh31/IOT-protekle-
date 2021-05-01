@@ -33,6 +33,38 @@
     }
   
     </style>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        google.charts.load('current', { 'packages': ['gauge'] });
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+                ['Label', 'Value'],
+                ['IR', 40],
+                ['SMELL', 75],
+                ['GAS', 68],
+                ['ULTRASONIC', 68],
+            ]);
+
+            var options = {
+                width: 700, height: 350,
+                redFrom: 90, redTo: 100,
+                yellowFrom: 75, yellowTo: 90,
+                minorTicks: 5
+            };
+
+            var chart = new google.visualization.Gauge(document.getElementById('chart_div'));
+
+            chart.draw(data, options);
+
+            
+            
+        }
+
+
+    </script>
     <script src = "https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     
 </head>
@@ -64,24 +96,27 @@
     
 </nav>
 <div class="cardi bg-dark">
-    <div class="container">
-        <div class="row ">
-            <div class="col-md-3">
+    <div class="container ba">
+
+    
+        <div class="row  ">
+            <div class="col-md-2">
                 <div class="card bg-secondary">
-                    <div class="card-block">
+                    <div class="">
                         <h4 class="card-title tit">IR Sensor</h4>
                         <p class="tit">
                             to check so and so
                         </p>
-                        <div id="a">0</div>
+                        <div id="a"></div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card bg-secondary">
                     <div class="card-block">
-                        <h4 class="card-title tit">SMELL Sensor</h4>
+                        <h4 class="card-title tit">SMELL <br>
+                            Sensor</h4>
                         <p class="tit">
                             to check so and so
                         </p>
@@ -89,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card bg-secondary">
                     <div class="card-block">
                         <h4 class="card-title tit">GAS Sensor</h4>
@@ -100,7 +135,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <div class="card bg-secondary">
                     <div class="card-block">
                         <h4 class="card-title tit">ULTRASONIC Sensor</h4>
@@ -111,11 +146,26 @@
                     </div>
                 </div>
             </div>
+            <div class="col-md-2">
+                <div class="card bg-secondary">
+                    <div class="card-block">
+                        <h4 class="card-title tit">RGB Sensor</h4>
+                        <p class="tit">
+                            to check so and so
+                        </p>
+                        <div id="d"></div>
+                    </div>
+                </div>
+            </div>
             
-        </div>
         
     </div>
+    </div>
+    <div id="chart_div" style="padding-top: 7%; padding-left: 25%;"></div>
 </div>
+
+
+
 <footer class="py-7 fot heade">
     <h4 >Done By</h4>
     <p>Protekle</p>
