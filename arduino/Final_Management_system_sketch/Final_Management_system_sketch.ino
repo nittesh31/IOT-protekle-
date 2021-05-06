@@ -1,17 +1,26 @@
-#define trigPin 16
-#define echoPin 5
+#define trigPin 12
+#define echoPin 14
+#define smelPin A0
+#define piroPin D8
+
 long duration; // variable for the duration of sound wave travel
 long distance; // variable for the distance measurement
 #include <Arduino_JSON.h>
 #include <ESP8266WiFi.h>
 #include "RestClient.h"
-char ssid[] = "stunny";
-char pass[] = "Sabarips";
+char ssid[] = "Raahul jio 4G";
+char pass[] = "12345678";
 char jsonObject[128];
 String data;
 String dist;
+String gas = "null";
 const char* dist1;
 String response;
+int pirStat = 0;
+int capacity = 0;
+String cap = "null";
+
+
 RestClient client = RestClient("protekle-toiletsystem.herokuapp.com");
 void setup() {
 
@@ -19,7 +28,9 @@ void setup() {
   Serial.begin (9600);
   pinMode(trigPin, OUTPUT);
   pinMode(echoPin, INPUT);
-   Serial.println("Ultrasonic Sensor HC-SR04 Test"); // print some text in Serial Monitor
+  pinMode(smelPin, INPUT);
+  pinMode(piroPin, INPUT);
+  Serial.println("Ultrasonic Sensor HC-SR04 Test"); // print some text in Serial Monitor
   Serial.println("with Arduino UNO R3");
   WiFi.mode(WIFI_OFF);        //Prevents reconnection issue (taking too long to connect)
   delay(1000);
@@ -44,6 +55,28 @@ void setup() {
 }
 
 void loop() {
+
+  int smellData = analogRead(smelPin);
+//  gas = String(smellData);
+  if (smellData>880){
+    gas = "Gas detected";
+    Serial.println("Gas detected");
+  }
+  
+  if(smellData <880)
+  {
+    gas = "No Gas detected";
+    Serial.println("No Gas detected");
+  }
+
+
+  pirStat = digitalRead(piroPin); 
+  if (pirStat == HIGH) {            // if motion detected
+   capacity = capacity + 1;
+   Serial.println("Hey I got you!!!");
+  } 
+
+  
   // Clears the trigPin condition
   digitalWrite(trigPin, LOW);
   delayMicroseconds(2);
@@ -58,8 +91,9 @@ void loop() {
   // Displays the distance on the Serial Monitor
   Serial.print("Distance: ");
   Serial.print(distance);
+  cap = String(capacity);
   dist=String(distance);
-  data = "{\r\n        \"gas\": 10,\r\n        \"smell\": "+dist+",\r\n        \"RGB\": 15,\r\n        \"IR\": 10\r\n}";
+  data = "{\r\n        \"gas\": \""+ gas +"\",\r\n        \"smell\": "+dist+",\r\n        \"RGB\": 15,\r\n        \"IR\": "+cap+"\r\n}";
   dist1=data.c_str();
   Serial.println(dist1);
   Serial.println(" cm");

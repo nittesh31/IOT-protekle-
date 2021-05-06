@@ -48,6 +48,24 @@ const express = require('express');
 const server = express();
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
+const token = 'secure';
+const nodemailer = require('nodemailer');
+
+var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'raahulprem61@gmail.com',
+      pass: '9244331111'
+    }
+  });
+  
+  var mailOptions = {
+    from: 'raahulprem61@gmail.com',
+    to: 'sabaripssd@gmail.com',
+    subject: 'Notification from Toilet Management System',
+    text: 'Your Toilet has to be cleaned'
+  };
+
 
 var sensorData = [
     {gas: 10, smell: 2, RGB: 15, IR: 10},
@@ -81,6 +99,19 @@ server.post('/dataViewer', (req, res) => {
         RGB: req.body.RGB, 
         IR: req.body.IR
     }   
+
+    if (sensorData1.smell < 10 || sensorData1.IR >25 || sensorData1.gas == "Gas detected"){
+        transporter.sendMail(mailOptions, function(error, info){
+            if (error) {
+              console.log(error);
+            } else {
+              console.log('Email sent: ' + info.response);
+            }
+          });
+
+    
+
+    }
     
     sensorData.push(sensorData1);
     res.send(sensorData1);
@@ -130,4 +161,37 @@ server.get('/dataViewer', (req, res) => {
 server.listen(process.env.PORT||3000, () => console.log('Listening on port 3000....'))
 
 
+
+// server.get('/', (req, res) => {
+//     // check if verification token is correct
+//     if (req.query.token !== token) {
+//         return res.sendStatus(401);
+//     }
+
+//     // return challenge
+//     return res.end(req.query.challenge);
+// });
+
+
+// server.post('/', (req, res) => {
+//     // check if verification token is correct
+//     if (req.query.token !== token) {
+//         return res.sendStatus(401);
+//     }
+
+//     // print request body
+//     console.log(req.body);
+
+//     // return a text response
+//     const data = {
+//         responses: [
+//             {
+//                 type: 'text',
+//                 elements: ['Hi', 'Hello']
+//             }
+//         ]
+//     };
+
+//     res.json(data);
+// });
 // module.exports.arr = sensorData;

@@ -9,7 +9,7 @@ long distance; // variable for the distance measurement
 #include <WiFiClient.h> 
 #include <ESP8266WebServer.h>
 #include <ESP8266HTTPClient.h>
-char ssid[] = "RaahulJio 5G";
+char ssid[] = "Raahul jio 4G";
 char pass[] = "12345678";
 String postData;
 String postVariable = "Level of tank=";
