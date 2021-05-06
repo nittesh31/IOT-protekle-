@@ -54,14 +54,14 @@ const nodemailer = require('nodemailer');
 var transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
-      user: 'raahulprem61@gmail.com',
-      pass: '9244331111'
+      user: 'protekle04@gmail.com',
+      pass: 'Protekle04@04'
     }
   });
   
   var mailOptions = {
-    from: 'raahulprem61@gmail.com',
-    to: 'sabaripssd@gmail.com',
+    from: 'protekle04@gmail.com',
+    to: 'sabariiftt@gmail.com',
     subject: 'Notification from Toilet Management System',
     text: 'Your Toilet has to be cleaned'
   };
