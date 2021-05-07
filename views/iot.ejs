@@ -1,7 +1,7 @@
 <html lang="en">
 
 <head>
-    
+
     <title>IOT page</title>
     <!-- <link rel="stylesheet" href=( __dirname + "/" + "iot.css" )/> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
@@ -9,40 +9,105 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
     <style>
-    .heade{
-    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgba(42, 25, 25, 0.692);
-    }
+        .heade {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            color: whitesmoke;
+            padding-left: 32%;
+        }
 
-    .cardi{
-        padding-top: 13%;
-        height:76%
-    }
-    .tit{
-        padding-top: 8%;
-        text-align: center;
-        color: white;
-    }
-    .card{
-        height: 140%;
-        
-    }
-    .fot{
-        padding-top: 2%;
-        text-align: center;
-    }
-  
+        body {
+            background-color: #393e46;
+        }
+
+        .colo {
+            background-color: #00adb5;
+            box-shadow: 2px 8px 0px 0px black;
+        }
+
+        .cardi {
+            padding-top: 13%;
+            height: 76%
+        }
+
+        .tit {
+            padding-top: 8%;
+            text-align: center;
+            color: #0D2C49;
+
+        }
+
+        .titi {
+            padding-top: 8%;
+            text-align: center;
+            color: white;
+        }
+
+        .card {
+            height: 100%;
+            width: 90%;
+            font-family: sans-serif;
+
+            box-shadow: 0px 0px 0px grey;
+            box-shadow: 2px 2.8px 2.9px 3px black;
+        }
+
+        .fot {
+            padding-top: 2%;
+            text-align: center;
+        }
+
+        .boxin {
+            width: 20em;
+            height: 15em;
+        }
+
+        .firs {
+            padding-left: 1%;
+        }
+
+        .wa {
+            width: 25em;
+        }
+
+        .le {
+            padding-left: 6%;
+        }
+
+        .de {
+            width: 22em;
+        }
+
+        .fol {
+            background-color: #f6dcbf;
+        }
+
+        .headeo {
+            color: white;
+        }
+
+        .fr {
+            padding-bottom: 0em;
+            border-bottom: 0em;
+        }
+
+        .lol {
+            background-color: #0D2C49;
+        }
+
+        .siz {
+            font-size: 115%;
+        }
     </style>
-   
-    <script src = "https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
-    
+
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
 </head>
 
 
 
 
 
-    <!--<header>
+<!--<header>
         IOT Dashboard-Protekle 
     </header>
     <footer>
@@ -62,66 +127,89 @@
 -->
 <nav class="navbar  navbar-light  py-4 shadow-sm">
     <h1 class="heade">TOILET MANAGEMENT SYSTEM</h1>
-    
+
 </nav>
-<div class="cardi bg-dark">
-    <div class="container ba">
+<div class="cardi colo">
+    <div class=" ba">
 
-    
-        <div class="row  ">
-            <div class="col-md-2">
-                <div class="card bg-secondary">
+
+        <div class="row firs le ">
+            <div class="de">
+                <div class="card fol">
                     <div class="">
-                        <h4 class="card-title tit">IR Sensor</h4>
-                        <p class="tit">
-                            no. of people entered the toilet so far is
+                        <h3 class="card-title tit">IR Sensor</h3>
+                        <p class="tit siz">
+                            Number of people <br>entered the toilet so far
                         </p>
-                        <div id="a" class="tit"> <%= IR %> </div>
+                        <div id="a" class="tit fr">
+                            <%= IR %>
+                        </div>
 
                     </div>
                 </div>
             </div>
-            <div class="col-md-2">
-                <div class="card bg-secondary">
+            <div class="firs wa">
+                <div class="card fol">
                     <div class="card-block">
-                        <h4 class="card-title tit">SMELL <br>
-                            Sensor</h4>
-                        <p class="tit">
-                           Based on the level of ammonia
+                        <h3 class="card-title tit">Smell
+                            Sensor</h3>
+                        <p class="tit siz">
+                            Based on the level of ammonia
                         </p>
-                        <div id="b" class="tit"> <%= gas %> </div>
+                        <div id="b" class="tit fr">
+                            <p></p>
+                            <%= gas %>
+                        </div>
                     </div>
                 </div>
             </div>
-  
-            <div class="col-md-2">
-                <div class="card bg-secondary">
+
+            <div class="firs wa">
+                <div class="card fol">
                     <div class="card-block">
-                        <h4 class="card-title tit">ULTRASONIC Sensor</h4>
-                        <p class="tit">
+                        <h3 class="card-title tit">Ultrasonic Sensor</h3>
+                        <p class="tit siz">
                             Level of septic tank
                         </p>
-                        <div id="d" class="tit"> <%= smell %> </div>
+                        <div id="d" class="tit">
+                            <p></p>
+                            <%= smell %>
+                        </div>
                     </div>
                 </div>
             </div>
-  
+            <!--
+                <div class="boxin firs wa ba">
+                <div class="card lol">
+                    <div class="">
+                        <h3 class="card-title titi">NOTICE</h3>
+                        <p class="">
             
-        
+                        </p>
+            
+                    </div>
+                </div>
+             </div>
+            -->
+
+
+
+        </div>
+
     </div>
-    </div>
+
     <div id="chart_div" style="padding-top: 7%; padding-left: 25%;"></div>
 </div>
 
 
 
-<footer class="py-7 fot heade">
-    <h4 >Done By</h4>
+<footer class="py-7 fot headeo">
+    <h4>Done By</h4>
     <p>Protekle</p>
 
 </footer>
 
-<script src = "./iot.js">
+<script src="./iot.js">
     // var sensorData = require('./app.js')
 
     // document.getElementById("a").innerHTML = sensorData[0].gas
@@ -131,10 +219,3 @@
 </body>
 
 </html>
-
-
-
-
-
-
-

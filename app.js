@@ -68,8 +68,8 @@ var transporter = nodemailer.createTransport({
 
 
 var sensorData = [
-    {gas: 10, smell: 2, RGB: 15, IR: 10},
-    {gas: 15, smell: 5, RGB: 5, IR: 1},
+    {gas: 10, ultrasonic: 2, RGB: 15, IR: 10},
+    {gas: 15, ultrasonic: 5, RGB: 5, IR: 1},
 ];
 
 
@@ -95,12 +95,12 @@ server.get('/' , (req, res) => {
 server.post('/dataViewer', (req, res) => {
     const sensorData1 = {
         gas: req.body.gas,
-        smell: req.body.smell, 
+        ultrasonic: req.body.ultrasonic, 
         RGB: req.body.RGB, 
         IR: req.body.IR
     }   
 
-    if (sensorData1.smell < 10 || sensorData1.IR >25 || sensorData1.gas == "Gas detected"){
+    if (sensorData1.ultrasonic < 10 || sensorData1.IR >25 || sensorData1.gas == "Gas detected"){
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
               console.log(error);
@@ -136,7 +136,7 @@ server.get('/dataReceiver', (req, res) => {
     res.render('iot', {
         
         gas: sensorData[count].gas,
-        smell: sensorData[count].smell, 
+        ultrasonic: sensorData[count].ultrasonic, 
         RGB: sensorData[count].RGB, 
         IR: sensorData[count].IR
     });
