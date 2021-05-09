@@ -62,7 +62,7 @@ void loop() {
 
   int smellData = analogRead(smelPin);
 //  gas = String(smellData);
-  if (smellData>880){
+  if (smellData>850){
     gas = "Gas detected";
     Serial.println("Gas detected");
   }
