@@ -25,7 +25,7 @@
         }
 
         .cardi {
-            padding-top: 13%;
+            padding-top: 14%;
             height: 76%
         }
 
@@ -70,7 +70,7 @@
         }
 
         .le {
-            padding-left: 6%;
+            padding-left: 18%;
         }
 
         .de {
@@ -97,9 +97,54 @@
         .siz {
             font-size: 115%;
         }
+
+        .sep {
+            text-align: center;
+            font-size: 2em;
+            padding-bottom: 1%;
+        }
+
+
+        #progress {
+            width: 75%;
+            margin: 0 auto;
+            border-radius: 10px;
+            background-color: #a8a8a8;
+            padding: 7px 5px;
+            box-shadow: 1px 5px 20px black !important;
+        }
+
+        #fill {
+            padding: 2px 0;
+            background-color: #00b98b;
+            width: 55%;
+            border-radius: 25px;
+            animation: proanimate 2s;
+        }
+
+        #barpercent h3 {
+            color: white;
+            margin: 0;
+            padding: 0;
+            opacity: 1;
+            animation: fadein 3s forwards;
+        }
+
+        @keyframes fadein {
+            from {
+                opacity: 0;
+            }
+        }
+
+        @keyframes proanimate {
+            from {
+                width: 0%;
+            }
+        }
     </style>
 
     <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+
 
 </head>
 
@@ -134,6 +179,7 @@
 
 
         <div class="row firs le ">
+
             <div class="de">
                 <div class="card fol">
                     <div class="">
@@ -148,6 +194,9 @@
                     </div>
                 </div>
             </div>
+
+
+
             <div class="firs wa">
                 <div class="card fol">
                     <div class="card-block">
@@ -178,27 +227,14 @@
                     </div>
                 </div>
             </div>
-            <!--
-                <div class="boxin firs wa ba">
-                <div class="card lol">
-                    <div class="">
-                        <h3 class="card-title titi">NOTICE</h3>
-                        <p class="">
-            
-                        </p>
-            
-                    </div>
-                </div>
-             </div>
-            -->
-
-
 
         </div>
 
     </div>
 
     <div id="chart_div" style="padding-top: 7%; padding-left: 25%;"></div>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
 </div>
 
 
