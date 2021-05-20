@@ -93,7 +93,7 @@ void loop() {
   Serial.print(distance);
   cap = String(capacity);
   dist=String(distance);
-  data = "{\r\n        \"gas\": \""+ gas +"\",\r\n        \"smell\": "+dist+",\r\n        \"RGB\": 15,\r\n        \"IR\": "+cap+"\r\n}";
+  data = "{\r\n        \"gas\": \""+ gas +"\",\r\n        \"ultrasonic\": "+dist+",\r\n        \"IR\": "+cap+"\r\n}";
   dist1=data.c_str();
   Serial.println(dist1);
   Serial.println(" cm");
